@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Android";
+  src: url("/src/assets/Android_Scratch.ttf");
+}
