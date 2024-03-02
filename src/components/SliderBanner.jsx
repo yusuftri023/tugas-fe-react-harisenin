@@ -41,7 +41,7 @@ function SliderBanner() {
           >
             <MdArrowLeft className="text-4xl text-zinc-100" />
           </div>
-          <div>Hello</div>
+          <div className="text-3xl">Join Our Community</div>
           <div
             onClick={() => handleSliderButton("right")}
             className=" mr-4 border-[3px] border-zinc-100 rounded-full hover:cursor-pointer hover:bg-blue-400 hover:bg-opacity-50"

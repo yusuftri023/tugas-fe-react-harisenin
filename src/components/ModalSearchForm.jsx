@@ -119,7 +119,7 @@ function ModalSearchForm({ theme }) {
                               } py-2     border-b-4 border-gray-500 border-opacity-50 animate-fade-in`}
                             >
                               <div className="inline-block ml-4 bg-black rounded-full">
-                                <a href={`/profile/${id}`}>
+                                <a href={`/profiles/${id}`}>
                                   <img
                                     src="/src/assets/react.svg"
                                     className="p-1"
@@ -129,7 +129,7 @@ function ModalSearchForm({ theme }) {
                               <div className="inline-block">
                                 <h2>
                                   <a
-                                    href={`/profile/${id}`}
+                                    href={`/profiles/${id}`}
                                     className=" text-blue-600 ml-4 hover:underline"
                                   >
                                     {username}
