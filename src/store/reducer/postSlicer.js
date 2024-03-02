@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllPost, getPost, getUserPost } from "../actions/postAction";
+import {
+  getAllPost,
+  getPost,
+  getSinglePost,
+  getUserPost,
+} from "../actions/postAction";
 
 const initialState = {
   data: [],
@@ -15,11 +20,11 @@ export const allPostSlice = createSlice({
         state.data = action.payload.data;
         state.isLoading = false;
 
-        console.timeEnd("fetching completed in: ");
+        // console.timeEnd("fetching completed in: ");
       })
       .addCase(getAllPost.pending, (state) => {
         state.isLoading = true;
-        console.time("fetching completed in: ");
+        // console.time("fetching completed in: ");
       })
       .addCase(getAllPost.rejected, (state, action) => {
         state.isLoading = false;
@@ -37,11 +42,11 @@ export const postSearchSlice = createSlice({
       .addCase(getPost.fulfilled, (state, action) => {
         state.data = action.payload.data;
         state.isLoading = false;
-        console.timeEnd("fetching completed in: ");
+        // console.timeEnd("fetching completed in: ");
       })
       .addCase(getPost.pending, (state) => {
         state.isLoading = true;
-        console.time("fetching completed in: ");
+        // console.time("fetching completed in: ");
       })
       .addCase(getPost.rejected, (state, action) => {
         state.isLoading = false;
@@ -58,13 +63,35 @@ export const postSlice = createSlice({
       .addCase(getUserPost.fulfilled, (state, action) => {
         state.data = action.payload.data.posts;
         state.isLoading = false;
-        console.timeEnd("fetching completed in: ");
+        // console.timeEnd("fetching completed in: ");
       })
       .addCase(getUserPost.pending, (state) => {
         state.isLoading = true;
-        console.time("fetching completed in: ");
+        // console.time("fetching completed in: ");
       })
       .addCase(getUserPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error;
+      });
+  },
+});
+export const singlePostSlice = createSlice({
+  name: "singlePost",
+  initialState,
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(getSinglePost.fulfilled, (state, action) => {
+        console.log(action.payload.data);
+        state.data = action.payload.data;
+        state.isLoading = false;
+        console.timeEnd("fetching completed in: ");
+      })
+      .addCase(getSinglePost.pending, (state) => {
+        state.isLoading = true;
+        console.time("fetching completed in: ");
+      })
+      .addCase(getSinglePost.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error;
       });

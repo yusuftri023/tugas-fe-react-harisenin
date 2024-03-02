@@ -5,7 +5,7 @@ import LoadingContent from "../../components/LoadingContent";
 
 function TabProfile({ id, theme }) {
   const [userProfile, isLoading, error] = useFetchUserDataProfile(id);
-  console.log(userProfile);
+
   return (
     <>
       <section

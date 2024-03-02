@@ -1,5 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { allPostSlice, postSearchSlice, postSlice } from "./reducer/postSlicer";
+import {
+  allPostSlice,
+  postSearchSlice,
+  postSlice,
+  singlePostSlice,
+} from "./reducer/postSlicer";
 import commentSlicer from "./reducer/commentSlicer";
 import userSlicer, { userProfileSlice } from "./reducer/userSlicer";
 import { tabSlice } from "./reducer/tabSlicer";
@@ -15,5 +20,6 @@ export const store = configureStore({
     tab: tabSlice.reducer,
     theme: themeSlice.reducer,
     postSearch: postSearchSlice.reducer,
+    singlePost: singlePostSlice.reducer,
   },
 });

@@ -29,11 +29,11 @@ export const userProfileSlice = createSlice({
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.data = action.payload.data;
         state.isLoading = false;
-        console.timeEnd("fetching completed in: ");
+        // console.timeEnd("fetching completed in: ");
       })
       .addCase(getUserProfile.pending, (state) => {
         state.isLoading = true;
-        console.time("fetching completed in: ");
+        // console.time("fetching completed in: ");
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.isLoading = false;

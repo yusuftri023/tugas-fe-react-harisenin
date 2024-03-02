@@ -28,7 +28,7 @@ function ThemeSwitchButton() {
       document.body.classList.add("bg-[#373737]");
     }
   }, [theme]);
-  console.log("rendered");
+
   return (
     <button
       onClick={handleSwitch}
