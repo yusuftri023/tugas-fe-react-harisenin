@@ -13,23 +13,24 @@ function SliderBanner() {
       return setActiveSlide((state) => state + 1);
     }
   };
+
   return (
     <div className="w-full h-[250px] mt-4">
       <div className="w-[1000px] h-full mx-auto bg-black overflow-hidden ">
         <div
           className={
             " backdrop-brightness-75 flex flex-row transform duration-200 ease-in-out " +
-            " translate-x-[-" +
+            `-translate-x-[` +
             activeSlide * 100 +
-            "%]"
+            `%]`
           }
         >
           <img
-            src="/src/assets/vecteezy_light-and-dark-background-random-minimalist-abstract_10481768-1.jpg"
+            src="/src/assets/10481768-1.jpg"
             className="h-full w-full object-cover "
           ></img>
           <img
-            src="/src/assets/vecteezy_light-and-dark-background-random-minimalist-abstract_10482354.jpg"
+            src="/src/assets/10482354.jpg"
             className="h-full w-full object-cover "
           ></img>
         </div>
@@ -38,7 +39,6 @@ function SliderBanner() {
             onClick={() => handleSliderButton("left")}
             className=" ml-4 border-[3px] border-zinc-100 rounded-full hover:cursor-pointer hover:bg-blue-400 hover:bg-opacity-50"
           >
-            {" "}
             <MdArrowLeft className="text-4xl text-zinc-100" />
           </div>
           <div>Hello</div>

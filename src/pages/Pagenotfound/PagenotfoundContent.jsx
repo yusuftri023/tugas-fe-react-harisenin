@@ -1,8 +1,10 @@
 function PagenotfoundContent() {
   return (
-    <section className="h-[100%] mt-16 ">
-      <div className="absolute top-[40%]  translate-y-[-50%] left-[50%] translate-x-[-50%] mx-auto   text-black w-fit h-fit ">
-        <img src="/src/assets/page-not-found.svg" className="h-[300px]"></img>
+    <section className=" my-20 ">
+      <div className=" text-black ">
+        <div className="flex justify-center">
+          <img src="/src/assets/page-not-found.svg" className="h-[300px]"></img>
+        </div>
         <p className="text-center text-5xl font-semibold ">
           404 Page Not Found
         </p>

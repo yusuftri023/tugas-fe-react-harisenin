@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, Route, useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import ProfilePageTab from "./ProfilePageTab";
 import Footer from "../../components/Footer";
@@ -7,9 +7,13 @@ import TabPost from "./TabPost";
 import { useSelector } from "react-redux";
 import ThemeSwitchButton from "../../components/ThemeSwitchButton";
 import ProfileMain from "./ProfileMain";
+import Pagenotfound from "../Pagenotfound/Pagenotfound";
 
 function Profilepage() {
   const { id } = useParams();
+
+  console.log(id);
+
   const activeTab = useSelector((state) => state.tab.activeTab);
   const theme = useSelector((state) => state.theme.currentTheme);
   let tabContent;
@@ -29,9 +33,7 @@ function Profilepage() {
         <ThemeSwitchButton theme={theme} />
       </Header>
       <ProfileMain id={id} theme={theme} />
-
       <ProfilePageTab />
-
       <section
         className={
           (theme === "dark" ? "shadow-gray-800 " : "shadow-zinc-700 ") +
@@ -40,7 +42,6 @@ function Profilepage() {
       >
         {tabContent()}
       </section>
-
       <Footer theme={theme} />
     </div>
   );

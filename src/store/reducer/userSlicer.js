@@ -27,20 +27,15 @@ export const userProfileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getUserProfile.fulfilled, (state, action) => {
-        console.log(action.payload.data);
         state.data = action.payload.data;
         state.isLoading = false;
-        console.log("fulfilled");
         console.timeEnd("fetching completed in: ");
       })
       .addCase(getUserProfile.pending, (state) => {
         state.isLoading = true;
-        console.log("pending");
         console.time("fetching completed in: ");
       })
       .addCase(getUserProfile.rejected, (state, action) => {
-        console.log("rejected here");
-
         state.isLoading = false;
         state.error = action.error;
       });

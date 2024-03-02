@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getComment } from "../actions/commentAction";
 const initialState = {
   data: [],
-  isLoading: true,
-  testData: "Hello Test",
+  isLoading: null,
+  error: null,
 };
 
 export const commentSlice = createSlice({

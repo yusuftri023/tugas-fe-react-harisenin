@@ -67,7 +67,7 @@ function ModalSearchForm({ theme }) {
                           >
                             <h2>
                               <a
-                                href="/"
+                                href={`/posts/${id}/comments`}
                                 className=" text-blue-600 ml-4 hover:underline"
                               >
                                 {title}

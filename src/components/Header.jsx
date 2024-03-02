@@ -70,8 +70,10 @@ function Header({ theme, children }) {
 
             <div
               className={
-                (searchActive ? "" : " -translate-y-10 opacity-0 z-[-100]") +
-                " transform ease-in-out duration-300  absolute opacity-100 z-[101] w-0 h-0"
+                (searchActive
+                  ? "opacity-100  z-[100] "
+                  : " -translate-y-10 opacity-0 z-[-1]") +
+                " transform ease-in-out duration-300  absolute  w-0 h-0"
               }
             >
               <ModalSearchForm theme={theme} />

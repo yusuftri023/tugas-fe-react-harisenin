@@ -2,6 +2,7 @@ import axios from "axios";
 import { axiosInterceptors } from "../utils/axiosInteceptors";
 
 export const fetchPost = function () {
+  axiosInterceptors();
   const data = new Promise((res) =>
     setTimeout(
       () => res(axios.get("https://jsonplaceholder.typicode.com/posts")),

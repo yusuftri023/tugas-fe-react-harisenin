@@ -8,6 +8,7 @@ import LoadingContent from "../../components/LoadingContent";
 import ErrorContent from "../../components/ErrorContent";
 import PostContent from "./PostContent";
 import useFetchAllPost from "../../hooks/useFetchAllPost";
+import SliderBanner from "../../components/SliderBanner";
 
 function Homepage() {
   const [allPost, isLoading, error] = useFetchAllPost();
@@ -23,7 +24,7 @@ function Homepage() {
       <Header theme={theme}>
         <ThemeSwitchButton />
       </Header>
-
+      <SliderBanner />
       <section
         className={
           (theme === "dark" ? "shadow-gray-800 " : "shadow-zinc-700 ") +
@@ -34,7 +35,13 @@ function Homepage() {
           [...allPost]
             ?.reverse()
             ?.map(({ title, body, id }) => (
-              <PostContent key={id} title={title} body={body} theme={theme} />
+              <PostContent
+                key={id}
+                id={id}
+                title={title}
+                body={body}
+                theme={theme}
+              />
             ))
         ) : isLoading ? (
           <div

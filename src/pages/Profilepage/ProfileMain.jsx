@@ -11,7 +11,7 @@ function ProfileMain({ theme, id }) {
         (theme === "dark"
           ? " bg-gray-700 bg-opacity-80 shadow-gray-800 "
           : "bg-zinc-100 shadow-zinc-700 ") +
-        "z-[99] w-[1000px] h-[300px] mx-auto rounded-b-lg mt-10 relative shadow-sm drop-shadow-lg"
+        "z-[1] w-[1000px] h-[300px] mx-auto rounded-b-lg mt-10 relative shadow-sm drop-shadow-lg"
       }
     >
       <div className="border-gray-500 w-[1000px] h-[226px] absolute flex flex-row border-b-[1px] ">

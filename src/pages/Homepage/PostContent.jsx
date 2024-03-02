@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function PostContent({ title, body, theme }) {
+function PostContent({ title, body, id, theme }) {
   return (
     <div
       className={`${
@@ -13,7 +13,10 @@ function PostContent({ title, body, theme }) {
         ></img>
         <div className="ml-4">
           <h2>
-            <a href="/" className=" text-blue-600 hover:underline">
+            <a
+              href={`/posts/${id}/comments`}
+              className=" text-blue-600 hover:underline"
+            >
               {title}
             </a>
           </h2>
