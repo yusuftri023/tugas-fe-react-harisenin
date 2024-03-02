@@ -1,4 +1,4 @@
-import { useFetchUserPost } from "../../hooks/useFetchUserPost";
+import useFetchUserPost from "../../hooks/useFetchUserPost";
 import LoadingContent from "../../components/LoadingContent";
 import ErrorContent from "../../components/ErrorContent";
 

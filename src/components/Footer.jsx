@@ -4,7 +4,7 @@ import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 function Footer({ position, theme }) {
   return (
     <footer
-      className={` ${position} h-[100px] ${
+      className={` ${position ? position + " w-full" : ""} h-[100px] ${
         theme === "dark" ? "bg-gray-700" : "bg-zinc-100"
       } mt-20 bottom-0  max-w-full  min-w-[1000px]`}
     >

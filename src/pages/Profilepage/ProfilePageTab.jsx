@@ -11,8 +11,8 @@ function ProfilePageTab() {
     dispatch(selectTab(activeTab));
   }, [activeTab]);
   return (
-    <div className="block mt-6  mb-3">
-      <div className=" justify-self-center max-w-[1000px ]  mx-auto">
+    <div className="block mt-6  mb-1">
+      <div className=" w-[1000px]  mx-auto flex justify-left">
         {["Profile", "Postings"].map((val, i) => (
           <span
             key={i}

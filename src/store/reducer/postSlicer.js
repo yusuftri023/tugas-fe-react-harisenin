@@ -1,11 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPost, getUserPost } from "../actions/postAction";
+import { getAllPost, getPost, getUserPost } from "../actions/postAction";
 
 const initialState = {
   data: [],
   isLoading: null,
   error: null,
 };
+export const allPostSlice = createSlice({
+  name: "allPost",
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllPost.fulfilled, (state, action) => {
+        console.log(action.payload.data);
+        state.data = action.payload.data;
+        state.isLoading = false;
+        console.log("fulfilled");
+        console.timeEnd("fetching completed in: ");
+      })
+      .addCase(getAllPost.pending, (state) => {
+        state.isLoading = true;
+        console.log("pending");
+        console.time("fetching completed in: ");
+      })
+      .addCase(getAllPost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error;
+      });
+  },
+});
 
 export const postSearchSlice = createSlice({
   name: "postSearch",

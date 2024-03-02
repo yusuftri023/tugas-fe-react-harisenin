@@ -1,41 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { MdSearch } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../store/actions/postAction";
-import { getUser } from "../store/actions/userAction";
+
 import LoadingContent from "./LoadingContent";
+import useSearchPost from "../hooks/useSearchPost";
+import useSearchMember from "../hooks/useSearchMember";
 
 /* eslint-disable react/prop-types */
 function ModalSearchForm({ theme }) {
-  const dispatch = useDispatch();
   const [searchTitle, setSearchTitle] = useState("");
   const [searchMember, setSearchMember] = useState("");
-  const [searchTitleResult, setSearchTitleResult] = useState([]);
-  const [searchMemberResult, setSearchMemberResult] = useState([]);
-  const isLoadingPost = useSelector((state) => state.postSearch.isLoading);
-  const isLoadingMember = useSelector((state) => state.user.isLoading);
-
-  useEffect(() => {
-    dispatch(getPost()).then((res) => {
-      setSearchTitleResult(() =>
-        res.payload.data.filter((post) => {
-          return post?.title?.toLowerCase().includes(searchTitle.toLowerCase());
-        })
-      );
-    });
-  }, [searchTitle]);
-  useEffect(() => {
-    dispatch(getUser()).then((res) => {
-      setSearchMemberResult(() =>
-        res.payload.data.filter((post) => {
-          return post?.username
-            ?.toLowerCase()
-            .includes(searchMember.toLowerCase());
-        })
-      );
-    });
-  }, [searchMember]);
-
+  const [searchTitleResult, isLoadingPost] = useSearchPost(searchTitle);
+  const [searchMemberResult, isLoadingMember] = useSearchMember(searchMember);
   return (
     <>
       <div
@@ -46,32 +21,37 @@ function ModalSearchForm({ theme }) {
           "relative -left-64 top-[5px] w-80  h-[400px] block whitespace-nowrap border-t-4 border-blue-500 rounded-lg shadow-md  "
         }
       >
-        <div className="w-[100%] h-[400px]  overflow-x-hidden ">
+        <div className="w-[100%] h-[400px]  overflow-x-hidden flex flex-col">
           <div className="text-lg border-b-2 border-gray-500 border-opacity-50 pl-4 py-2">
             Search
           </div>
-          <div className="pl-4 mt-2 text-sm">Search by title</div>
-          <div className="w-[90%]  mx-auto px-4 mt-2 rounded-lg  overflow-hidden bg-white">
-            <input
-              type="text"
-              placeholder="Title..."
-              onChange={(e) => setSearchTitle(() => e.target.value)}
-              className="w-[100%]  text-black  py-1 focus:outline-none bg-transparent"
-            ></input>
+          <div>
+            {" "}
+            <div className="pl-4 mt-2 text-sm">Search by title</div>
+            <div className="w-[90%]  mx-auto px-4 mt-2 rounded-lg  overflow-hidden bg-white">
+              <input
+                type="text"
+                placeholder="Title..."
+                onChange={(e) => setSearchTitle(() => e.target.value)}
+                className="w-[100%]  text-black  py-1 focus:outline-none bg-transparent"
+              ></input>
+            </div>
           </div>
-          <div className="pl-4 mt-2 text-sm">Search by member</div>
-          <div className="w-[90%]  mx-auto px-4 mt-2 rounded-lg overflow-hidden bg-white">
-            <input
-              type="text"
-              placeholder="Member..."
-              onChange={(e) => setSearchMember(() => e.target.value)}
-              className="w-[100%]  text-black  py-1 focus:outline-none bg-transparent"
-            ></input>
+          <div>
+            <div className="pl-4 mt-2 text-sm">Search by member</div>
+            <div className="w-[90%]  mx-auto px-4 mt-2 rounded-lg overflow-hidden bg-white">
+              <input
+                type="text"
+                placeholder="Member..."
+                onChange={(e) => setSearchMember(() => e.target.value)}
+                className="w-[100%]  text-black  py-1 focus:outline-none bg-transparent"
+              ></input>
+            </div>
           </div>
           {searchTitle && (
             <div className="text-lg border-b-2 border-gray-500 border-opacity-50  py-2">
               {" "}
-              <h2 className="ml-4">Result</h2>
+              <h2 className="ml-4">Title</h2>
               <div>
                 {searchTitleResult.length > 0 ? (
                   <ol>
@@ -123,6 +103,7 @@ function ModalSearchForm({ theme }) {
           )}
           {searchMember && (
             <div className="text-lg border-b-2 border-gray-500 border-opacity-50  py-2">
+              <h2 className="ml-4">Member</h2>
               <div>
                 {searchMemberResult.length > 0 ? (
                   <ol>
@@ -137,15 +118,25 @@ function ModalSearchForm({ theme }) {
                                   : "bg-zinc-50"
                               } py-2     border-b-4 border-gray-500 border-opacity-50 animate-fade-in`}
                             >
-                              <h2>
-                                <a
-                                  href={`/profile/${id}`}
-                                  className=" text-blue-600 ml-4 hover:underline"
-                                >
-                                  {username}
+                              <div className="inline-block ml-4 bg-black rounded-full">
+                                <a href={`/profile/${id}`}>
+                                  <img
+                                    src="/src/assets/react.svg"
+                                    className="p-1"
+                                  ></img>
                                 </a>
-                              </h2>
-                              <p className="ml-4">Company: {name}</p>
+                              </div>
+                              <div className="inline-block">
+                                <h2>
+                                  <a
+                                    href={`/profile/${id}`}
+                                    className=" text-blue-600 ml-4 hover:underline"
+                                  >
+                                    {username}
+                                  </a>
+                                </h2>
+                                <p className="ml-4">Company: {name}</p>
+                              </div>
                             </div>
                           </li>
                         )

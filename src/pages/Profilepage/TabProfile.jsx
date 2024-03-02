@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useFetchUserDataProfile } from "../../hooks/useFetchUserData";
+import useFetchUserDataProfile from "../../hooks/useFetchUserDataProfile";
 import ErrorContent from "../../components/ErrorContent";
 import LoadingContent from "../../components/LoadingContent";
 

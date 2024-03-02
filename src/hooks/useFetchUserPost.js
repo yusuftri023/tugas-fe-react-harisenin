@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserPost } from "../store/actions/postAction";
 
-export const useFetchUserPost = function (id) {
+const useFetchUserPost = function (id) {
   const dispatch = useDispatch();
   const [userPost, setUserPost] = useState([]);
   const isLoading = useSelector((state) => state.post.isLoading);
@@ -16,3 +16,4 @@ export const useFetchUserPost = function (id) {
 
   return [userPost, isLoading, error];
 };
+export default useFetchUserPost;

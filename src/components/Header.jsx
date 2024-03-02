@@ -28,7 +28,7 @@ function Header({ theme, children }) {
             FORUM KITA
           </span>
         </div>
-        <div className=" flex-row flex">
+        <div className=" flex-row flex items-center">
           <div className="">
             <a
               href="/"
@@ -68,11 +68,14 @@ function Header({ theme, children }) {
               <MdSearch className="inline-block mb-1 text-3xl" />
             </span>
 
-            {searchActive && (
-              <div className="animate-fade-in-drop  absolute opacity-100 z-[101] w-0 h-0">
-                <ModalSearchForm theme={theme} />
-              </div>
-            )}
+            <div
+              className={
+                (searchActive ? "" : " -translate-y-10 opacity-0 z-[-100]") +
+                " transform ease-in-out duration-300  absolute opacity-100 z-[101] w-0 h-0"
+              }
+            >
+              <ModalSearchForm theme={theme} />
+            </div>
 
             {searchActive && (
               <div
