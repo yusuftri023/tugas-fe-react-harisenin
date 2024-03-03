@@ -41,5 +41,3 @@ export const userProfileSlice = createSlice({
       });
   },
 });
-
-export default userSlice.reducer;

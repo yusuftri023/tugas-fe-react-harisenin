@@ -5,17 +5,17 @@ import {
   postSlice,
   singlePostSlice,
 } from "./reducer/postSlicer";
-import commentSlicer from "./reducer/commentSlicer";
-import userSlicer, { userProfileSlice } from "./reducer/userSlicer";
+import { commentSlice } from "./reducer/commentSlicer";
+import { userProfileSlice, userSlice } from "./reducer/userSlicer";
 import { tabSlice } from "./reducer/tabSlicer";
 import { themeSlice } from "./reducer/themeSlicer";
 
 export const store = configureStore({
   reducer: {
-    comment: commentSlicer,
+    comment: commentSlice.reducer,
     allPost: allPostSlice.reducer,
     post: postSlice.reducer,
-    user: userSlicer,
+    user: userSlice.reducer,
     userProfile: userProfileSlice.reducer,
     tab: tabSlice.reducer,
     theme: themeSlice.reducer,

@@ -30,12 +30,6 @@ export const fetchUserPost = function (userId) {
 };
 export const fetchPost = function (id) {
   axiosInterceptors();
-  const data = new Promise((res) =>
-    setTimeout(
-      () => res(axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)),
-      1000
-    )
-  );
-
+  const data = axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
   return data;
 };

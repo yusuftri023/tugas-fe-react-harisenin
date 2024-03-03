@@ -32,7 +32,9 @@ function Homepage() {
         <ThemeSwitchButton />
       </Header>
       <SliderBanner />
+
       <section className="my-16 w-[1000px]  mx-auto">
+        <h1 className="text-3xl mb-5">Latest Community Post</h1>
         <div
           className={
             (theme === "dark" ? "shadow-gray-800 " : "shadow-zinc-700 ") +

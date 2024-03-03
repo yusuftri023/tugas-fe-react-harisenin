@@ -82,14 +82,14 @@ export const singlePostSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getSinglePost.fulfilled, (state, action) => {
-        console.log(action.payload.data);
+    
         state.data = action.payload.data;
         state.isLoading = false;
-        console.timeEnd("fetching completed in: ");
+        // console.timeEnd("fetching completed in: ");
       })
       .addCase(getSinglePost.pending, (state) => {
         state.isLoading = true;
-        console.time("fetching completed in: ");
+        // console.time("fetching completed in: ");
       })
       .addCase(getSinglePost.rejected, (state, action) => {
         state.isLoading = false;

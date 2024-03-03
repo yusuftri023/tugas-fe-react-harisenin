@@ -7,6 +7,7 @@ import TabPost from "./TabPost";
 import { useSelector } from "react-redux";
 import ThemeSwitchButton from "../../components/ThemeSwitchButton";
 import ProfileMain from "./ProfileMain";
+import NavigateContent from "../../components/NavigateContent";
 
 function Profilepage() {
   const { id } = useParams();
@@ -29,6 +30,7 @@ function Profilepage() {
       <Header theme={theme}>
         <ThemeSwitchButton theme={theme} />
       </Header>
+      <NavigateContent currentLocation={"Profile"} />
       <ProfileMain id={id} theme={theme} />
       <ProfilePageTab />
 

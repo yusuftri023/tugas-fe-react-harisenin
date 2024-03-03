@@ -3,21 +3,12 @@ import { axiosInterceptors } from "../utils/axiosInteceptors";
 
 export const fetchUser = function () {
   axiosInterceptors();
-  const data = new Promise((res) =>
-    setTimeout(
-      () => res(axios.get("https://jsonplaceholder.typicode.com/users")),
-      1000
-    )
-  );
+  const data = axios.get("https://jsonplaceholder.typicode.com/users");
   return data;
 };
 export const fetchUserProfile = function (id) {
   axiosInterceptors();
-  const data = new Promise((res) =>
-    setTimeout(
-      () => res(axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)),
-      1000
-    )
-  );
+  const data = axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+
   return data;
 };

@@ -13,16 +13,14 @@ function SliderBanner() {
       return setActiveSlide((state) => state + 1);
     }
   };
-
+  const translateX = "-translate-x-[" + activeSlide * 100 + "%]";
   return (
     <div className="w-full h-[250px] mt-4">
       <div className="w-[1000px] h-full mx-auto bg-black overflow-hidden ">
         <div
           className={
             " backdrop-brightness-75 flex flex-row transform duration-200 ease-in-out " +
-            `-translate-x-[` +
-            activeSlide * 100 +
-            `%]`
+            translateX
           }
         >
           <img
